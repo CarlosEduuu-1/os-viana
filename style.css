@@ -1,0 +1,62 @@
+:root {
+  --bg: #eef0f2; --card: #fff; --ink: #14181f; --muted: #5b6573; --line: #d3d8de;
+  --accent: #c8102e; --accent-ink: #fff; --bad: #b3261e; --good: #1b7a43;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); min-height: 100vh; padding: 24px 16px; }
+.app { max-width: 600px; margin: 0 auto; }
+.brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 28px 24px; }
+.progress { display: flex; gap: 4px; margin-bottom: 24px; }
+.progress span { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.progress span.done { background: var(--accent); }
+.count { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.tag.req { background: #fdf1f3; color: var(--accent); font-weight: 600; }
+.tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: var(--line); color: var(--muted); margin-left: 6px; }
+h1 { font-size: 24px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+.hint { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
+label.big { display: block; font-weight: 600; margin-bottom: 8px; }
+input[type=text] { width: 100%; font: inherit; font-size: 20px; padding: 14px; border: 2px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
+input[type=text].mono { font-family: var(--mono); letter-spacing: .06em; }
+input[type=text]:focus { outline: none; border-color: var(--accent); }
+input[type=text].invalid { border-color: var(--bad); }
+.msg { min-height: 22px; font-size: 14px; margin: 8px 0 0; color: var(--muted); }
+.msg.bad { color: var(--bad); } .msg.ok { color: var(--good); }
+.row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+button { font: inherit; font-size: 16px; font-weight: 600; padding: 13px 20px; border-radius: 8px; border: 2px solid var(--accent); cursor: pointer; background: var(--accent); color: var(--accent-ink); }
+button.ghost { background: transparent; color: var(--accent); }
+button.small { font-size: 14px; padding: 6px 12px; }
+button:disabled { background: var(--line); border-color: var(--line); color: var(--muted); cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.grow { flex: 1; min-width: 140px; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.opt { display: flex; align-items: center; gap: 10px; border: 2px solid var(--line); border-radius: 8px; padding: 12px; cursor: pointer; font-size: 16px; min-width: 0; }
+.opt input { width: 20px; height: 20px; flex: none; accent-color: var(--accent); }
+.opt.on { border-color: var(--accent); background: #fdf1f3; }
+.opts.two { grid-template-columns: 1fr 1fr; }
+#outroWrap { margin-top: 12px; }
+@media (max-width: 520px) { .opts { grid-template-columns: 1fr; } }
+
+.sheetbox { width: 100%; background: #fff; border: 1px solid var(--line); margin: 0 auto; }
+.sheetbox svg { display: block; width: 100%; height: auto; }
+.answers { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.answers li { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.answers .k { font-size: 13px; color: var(--muted); }
+.answers .v { font-weight: 600; word-break: break-word; }
+.answers .txt { min-width: 0; }
+.tip { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+
+@page { size: A4; margin: 4mm; }
+@media print {
+  body { background: #fff; padding: 0; min-height: 0; }
+  .app { max-width: none; margin: 0; }
+  #sheetPage, #sheetPage .card { width: 100%; max-width: none; }
+  .app > *:not(#sheetPage) { display: none !important; }
+  #sheetPage .card { border: 0; padding: 0; background: none; }
+  #sheetPage .noprint { display: none !important; }
+  .sheetbox { border: 0; width: 200mm; max-width: none; margin: 0 auto; }
+}
