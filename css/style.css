@@ -60,3 +60,11 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--ink); outli
   #sheetPage .noprint { display: none !important; }
   .sheetbox { border: 0; width: 200mm; max-width: none; margin: 0 auto; }
 }
+
+/* Escolha da loja */
+.stores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button.store { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; min-width: 0; padding: 12px 14px; font-size: 17px; font-weight: 600; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 8px; }
+button.store small { font-family: var(--mono); font-size: 13px; font-weight: 400; letter-spacing: .04em; color: var(--muted); }
+button.store:hover { border-color: var(--accent); }
+button.store.on { border-color: var(--accent); background: #fdf1f3; }
+@media (max-width: 520px) { .stores { grid-template-columns: 1fr; } }
